@@ -84,9 +84,9 @@ public class Task {
                 strStatus = "DONE";
                 break;
         }
-        return  check + " " + name + "\n    " + " ~" + tag + "~ " +  strStatus +
+        return  check + " " + name + "\n    " +strStatus + "     [ " + tag + " ]" +
                 "\n    " + desc +
-                "\n    endDate: " + endDate +
+                "\n    End-date: " + endDate +
                 "   Priority Level: " + priority;
     }
 
