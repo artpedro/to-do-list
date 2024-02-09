@@ -65,6 +65,14 @@ public class Task {
         this.status = status;
     }
 
+    public String toCsv(String sep) {
+        return  this.name + sep +
+                this.desc + sep +
+                this.endDate + sep +
+                Integer.toString(this.priority) + sep +
+                this.tag + sep +
+                Integer.toString(this.status) + "\n";
+    }
     @Override
     public String toString() {
         String check = "";

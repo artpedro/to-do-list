@@ -20,17 +20,17 @@ public class Application {
             // TaskPrinter.askCommand();
             String command = getInput().toLowerCase();
             if (command.equals("close")) break;
-            switch (command) {
-                case "new": TaskHandler.newTask(allTasks);
-                    break;
-                case "delete": TaskHandler.deleteTask(allTasks);
-                    break;
-                case "update": TaskHandler.updateTask(allTasks);
-                    break;
-                case "view": TaskHandler.viewTask(allTask);
-                    break;
-                default: System.out.println("Invalid Command");
-            }
+//            switch (command) {
+//                case "new": TaskHandler.newTask(allTasks);
+//                    break;
+//                case "delete": TaskHandler.deleteTask(allTasks);
+//                    break;
+//                case "update": TaskHandler.updateTask(allTasks);
+//                    break;
+//                case "view": TaskHandler.viewTask(allTask);
+//                    break;
+//                default: System.out.println("Invalid Command");
+//            }
         }
         // TaskPrinter.closeApp();
     }
