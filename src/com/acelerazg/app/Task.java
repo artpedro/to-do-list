@@ -1,5 +1,9 @@
 package com.acelerazg.app;
 
+import com.acelerazg.printer.TextColors;
+
+import javax.swing.*;
+
 public class Task {
     String name;
     String desc;
@@ -77,25 +81,36 @@ public class Task {
     public String toString() {
         String check = "";
         String strStatus = "";
-
+        String strPriority = "";
         if ((this.status == 0) || (this.status == 1)) check = "☐";
         else check = "☑";
 
+        switch (this.priority) {
+            case 1: strPriority = "    " + TextColors.ANSI_GREEN_BACKGROUND + TextColors.ANSI_BLACK + "Priority Level " + "1" + TextColors.ANSI_RESET;
+                break;
+            case 2: strPriority = "    " + TextColors.ANSI_CYAN_BACKGROUND + TextColors.ANSI_BLACK + "Priority Level " + "2" + TextColors.ANSI_RESET;
+                break;
+            case 3: strPriority = "    " + TextColors.ANSI_BLUE_BACKGROUND + TextColors.ANSI_BLACK + "Priority Level " + "3" + TextColors.ANSI_RESET;
+                break;
+            case 4: strPriority = "    " + TextColors.ANSI_YELLOW_BACKGROUND + TextColors.ANSI_BLACK + "Priority Level " + "4" + TextColors.ANSI_RESET;
+                break;
+            case 5: strPriority = "    " + TextColors.ANSI_RED_BACKGROUND + TextColors.ANSI_BLACK + "Priority Level " + "5" + TextColors.ANSI_RESET;
+        }
         switch (this.status) {
             case 0:
-                strStatus = "TO-DO";
+                strStatus = TextColors.ANSI_RED_BACKGROUND + TextColors.ANSI_BLACK +"TO-DO" + TextColors.ANSI_RESET;
                 break;
             case 1:
-                strStatus = "DOING";
+                strStatus = TextColors.ANSI_YELLOW_BACKGROUND + TextColors.ANSI_BLACK +"DOING" + TextColors.ANSI_RESET;
                 break;
             case 2:
-                strStatus = "DONE";
+                strStatus = TextColors.ANSI_GREEN_BACKGROUND + TextColors.ANSI_BLACK + "DONE" + TextColors.ANSI_RESET;
                 break;
         }
         return  check + " " + name + "\n    " +strStatus + "     [ " + tag + " ]" +
                 "\n    " + desc +
                 "\n    End-date: " + endDate +
-                "   Priority Level: " + priority;
+                 strPriority;
     }
 
 
