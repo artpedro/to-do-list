@@ -1,8 +1,7 @@
 package com.acelerazg.app;
 
 import com.acelerazg.printer.TextColors;
-
-import javax.swing.*;
+import java.util.Objects;
 
 public class Task {
     String name;
@@ -35,6 +34,19 @@ public class Task {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Task)) return false;
+        Task task = (Task) o;
+        return Objects.equals(getName(), task.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 
     public String getEndDate() {
