@@ -4,10 +4,6 @@ import com.acelerazg.app.Task;
 import com.acelerazg.app.TaskHandler;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 public class TaskFileReader {
@@ -32,7 +28,7 @@ public class TaskFileReader {
                 System.out.println("log criado");
             }
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred during log creation");
             e.printStackTrace();
         }
     }
