@@ -1,11 +1,6 @@
 package com.acelerazg.app;
 
 import com.acelerazg.printer.TaskPrinter;
-import com.sun.xml.internal.ws.encoding.fastinfoset.FastInfosetStreamReaderRecyclable;
-import sun.rmi.server.InactiveGroupException;
-
-import javax.rmi.CORBA.Util;
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.ArrayList;
 
 import static com.acelerazg.app.Utils.getInput;
@@ -75,7 +70,7 @@ public class TaskHandler {
         String delete_name = getInput();
         Task dummy = new Task(delete_name, "", "", 0, "", 1);
         for (Task task : tasks) {
-            if (task == dummy) {
+            if (task.equals(dummy)) {
                 tasks.remove(task);
                 return tasks;
             }
@@ -93,7 +88,7 @@ public class TaskHandler {
         Boolean save = false;
         Boolean discard = false;
         for (Task task : tasks) {
-            if (task == updateTask) {
+            if (task.equals(updateTask)) {
                 old_task = task.clone();
                 new_task = task.clone();
                 while (true) {
