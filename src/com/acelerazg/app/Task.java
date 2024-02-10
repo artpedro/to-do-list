@@ -3,7 +3,7 @@ package com.acelerazg.app;
 import com.acelerazg.printer.TextColors;
 import java.util.Objects;
 
-public class Task {
+public class Task implements Cloneable{
     String name;
     String desc;
     String endDate; // Date as string
@@ -77,6 +77,15 @@ public class Task {
         return status;
     }
 
+    public String getStrStatus() {
+        switch (this.status) {
+            case 0: return "Todo";
+            case 1: return "Doing";
+            case 2: return "Done";
+        }
+        return "";
+    }
+
     public void setStatus(int status) {
         this.status = status;
     }
@@ -85,17 +94,18 @@ public class Task {
         return  this.name + sep +
                 this.desc + sep +
                 this.endDate + sep +
-                Integer.toString(this.priority) + sep +
+                this.priority + sep +
                 this.tag + sep +
-                Integer.toString(this.status) + "\n";
+                this.status + "\n";
     }
     @Override
     public String toString() {
-        String check = "";
+        String check = "☑";
         String strStatus = "";
         String strPriority = "";
-        if ((this.status == 0) || (this.status == 1)) check = "☐";
-        else check = "☑";
+        if ((this.status == 0) || (this.status == 1)) {
+            check = "☐";
+        }
 
         switch (this.priority) {
             case 1: strPriority = "    " + TextColors.ANSI_GREEN_BACKGROUND + TextColors.ANSI_BLACK + "Priority Level " + "1" + TextColors.ANSI_RESET;
@@ -124,6 +134,9 @@ public class Task {
                 "\n    End-date: " + endDate +
                  strPriority;
     }
-
+    @Override
+    public Task clone() {
+        return new Task(this.name,this.desc,this.endDate,this.priority,this.tag,this.status);
+    }
 
 }
