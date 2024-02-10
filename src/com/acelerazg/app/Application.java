@@ -7,8 +7,6 @@ import static com.acelerazg.app.Utils.getInput;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("TO-DO LIST");
-        System.out.println();
         TaskFileReader fileReader = new TaskFileReader();
         ArrayList<Task> allTasks = fileReader.readLog(); // create one instance of Task for each line in log
         TaskPrinter.allByPriority(allTasks);
