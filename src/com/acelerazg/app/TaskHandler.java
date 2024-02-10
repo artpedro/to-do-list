@@ -2,6 +2,7 @@ package com.acelerazg.app;
 
 import com.acelerazg.printer.TaskPrinter;
 import com.sun.xml.internal.ws.encoding.fastinfoset.FastInfosetStreamReaderRecyclable;
+import sun.rmi.server.InactiveGroupException;
 
 import javax.rmi.CORBA.Util;
 import javax.swing.plaf.synth.SynthTextAreaUI;
@@ -28,21 +29,33 @@ public class TaskHandler {
             }
         }
 
-        System.out.println(start + " description?:\n> ");
+        System.out.println(start + "description?:\n> ");
         String desc = getInput();
 
-        System.out.println(start + " tag?:\n> ");
+        System.out.println(start + "tag?:\n> ");
         String tag = getInput();
 
-        System.out.println(start + " end date? (dd-mm-yyyy):\n> ");
+        System.out.println(start + "end date? (dd-mm-yyyy):\n> ");
         String endDate = getInput();
+        int priority = 0;
+        while (!(priority <= 5 && priority >= 1)) {
+            System.out.println(start + "priority? (1-5):\n> ");
 
-        System.out.println(start + " priority? (1-5):\n> ");
-        int priority = Integer.parseInt(getInput());
-
-        System.out.println(start + " status? (TODO | DOING | DONE):\n> ");
-        String strStatus = getInput().toUpperCase();
-
+            String answer = getInput();
+            try {
+                priority = Integer.parseInt(answer);
+            } catch (Exception e) {
+                continue;
+            }
+        }
+        String strStatus = "";
+        while (true) {
+            System.out.println(start + "status? (TODO | DOING | DONE):\n> ");
+            strStatus = getInput().toUpperCase();
+            if (strStatus.equals("DONE") || strStatus.equals("DOING") || strStatus.equals("TODO")){
+                break;
+            }
+        }
         int status = 0;
         switch (strStatus) {
             case "DOING":
@@ -169,4 +182,13 @@ public class TaskHandler {
         System.out.println("This task does not exist");
         return tasks;
     }
+    public static void viewTask(ArrayList<Task> tasks) {
+        System.out.println("How you want to sort the todo list? BY:(Status | Priority | Tag)\n> ");
+        String key = getInput().toLowerCase();
+        switch (key) {
+            case "status": TaskPrinter.allByStatus(tasks);
+            case "priority": TaskPrinter.allByPriority(tasks);
+            case "tag": TaskPrinter.allByTag(tasks);
+        }
+    };
 }
