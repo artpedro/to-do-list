@@ -8,14 +8,14 @@ import static com.acelerazg.app.Utils.getInput;
 public class TaskHandler {
     public Task logToTask(String entry, String sep) {
         String[] parameters = entry.split(sep);
-        Task new_task = new Task(parameters[0], parameters[1], parameters[2], Integer.parseInt(parameters[3]), parameters[4], Integer.parseInt(parameters[5]));
-        return new_task;
+        return new Task(parameters[0], parameters[1], parameters[2], Integer.parseInt(parameters[3]), parameters[4], Integer.parseInt(parameters[5]));
     }
 
     public static ArrayList<Task> newTask(ArrayList<Task> tasks) {
         String start = "What's the new task's ";
 
-        System.out.println(start + "name?:\n> ");
+        System.out.println(start + "name?:");
+        System.out.print("> ");
         String name = getInput();
         for (Task task : tasks) {
             if (task.equals(new Task(name, "", "", 0, "", 0))) {
@@ -24,33 +24,34 @@ public class TaskHandler {
             }
         }
 
-        System.out.println(start + "description?:\n> ");
+        System.out.println(start + "description?:");
+        System.out.print("> ");
         String desc = getInput();
 
-        System.out.println(start + "tag?:\n> ");
+        System.out.println(start + "tag?:");
+        System.out.print("> ");
         String tag = getInput();
 
-        System.out.println(start + "end date? (dd-mm-yyyy):\n> ");
+        System.out.println(start + "end date? (dd-mm-yyyy):");
+        System.out.print("> ");
         String endDate = getInput();
         int priority = 0;
         while (!(priority <= 5 && priority >= 1)) {
-            System.out.println(start + "priority? (1-5):\n> ");
-
+            System.out.println(start + "priority? (1-5):");
+            System.out.print("> ");
             String answer = getInput();
             try {
                 priority = Integer.parseInt(answer);
-            } catch (Exception e) {
-                continue;
+            } catch (Exception ignored) {
             }
         }
-        String strStatus = "";
-        while (true) {
-            System.out.println(start + "status? (TODO | DOING | DONE):\n> ");
+        String strStatus;
+        do {
+            System.out.println(start + "status? (TODO | DOING | DONE):");
+            System.out.print("> ");
+
             strStatus = getInput().toUpperCase();
-            if (strStatus.equals("DONE") || strStatus.equals("DOING") || strStatus.equals("TODO")){
-                break;
-            }
-        }
+        } while (!strStatus.equals("DONE") && !strStatus.equals("DOING") && !strStatus.equals("TODO"));
         int status = 0;
         switch (strStatus) {
             case "DOING":
@@ -66,7 +67,7 @@ public class TaskHandler {
     }
 
     public static ArrayList<Task> deleteTask(ArrayList<Task> tasks) {
-        System.out.println("What's the name of the task you want to delete?\n> ");
+        System.out.println("What's the name of the task you want to delete?");
         String delete_name = getInput();
         Task dummy = new Task(delete_name, "", "", 0, "", 1);
         for (Task task : tasks) {
@@ -80,44 +81,48 @@ public class TaskHandler {
     }
 
     public static ArrayList<Task> updateTask(ArrayList<Task> tasks) {
-        System.out.println("What's the name of the task you want to update?\n> ");
+        System.out.println("What's the name of the task you want to update?");
+        System.out.print("> ");
         String update_name = getInput();
         Task updateTask = new Task(update_name, "", "", 0, "", 1);
-        Task old_task = updateTask.clone();
         Task new_task = updateTask.clone();
-        Boolean save = false;
-        Boolean discard = false;
+        boolean save = false;
+        boolean discard = false;
         for (Task task : tasks) {
             if (task.equals(updateTask)) {
-                old_task = task.clone();
                 new_task = task.clone();
-                while (true) {
-                    System.out.println("What do you want to edit? (Description | EndDate | Priority | Tag | Status | Discard | Save)\n> ");
+                do {
+                    System.out.println("What do you want to edit? (Description | EndDate | Priority | Tag | Status | Discard | Save)");
+                    System.out.print("> ");
                     String field = getInput().toLowerCase();
                     switch (field) {
                         case "discard":
                             System.out.println("Discarding changes...");
+                            System.out.print("> ");
                             discard = true;
                             break;
                         case "save":
                             System.out.println("Saving changes...");
+                            System.out.print("> ");
                             save = true;
                             break;
                         case "description":
-                            System.out.println("Old Description:\n" + new_task.getDesc()+"\n");
-                            System.out.println("Type new Description:\n> ");
+                            System.out.println("Old Description:\n" + new_task.getDesc() + "\n");
+                            System.out.println("Type new Description:");
+                            System.out.print("> ");
                             new_task.setDesc(getInput());
                             break;
                         case "enddate":
                             System.out.println("Old End Date:\n" + new_task.getEndDate() + "\n");
-                            System.out.println("Type new End Date:\n> ");
+                            System.out.println("Type new End Date:");
+                            System.out.print("> ");
                             new_task.setEndDate(getInput());
                             break;
                         case "priority":
-                            System.out.println("Old Priority:\n" + Integer.toString(new_task.getPriority()) + "\n");
-                            System.out.println("Type new Priority:\n> ");
-                            String strPriority = getInput();
-                            switch (strPriority) {
+                            System.out.println("Old Priority:\n" + new_task.getPriority() + "\n");
+                            System.out.println("Type new Priority:");
+                            System.out.print("> ");
+                            switch (getInput()) {
                                 case "1":
                                     new_task.setPriority(1);
                                     break;
@@ -138,13 +143,15 @@ public class TaskHandler {
                             }
                             break;
                         case "tag":
-                            System.out.println("Old Tag:\n" + new_task.getTag()+ "\n");
-                            System.out.println("Type new tag:\n> ");
+                            System.out.println("Old Tag:\n" + new_task.getTag() + "\n");
+                            System.out.println("Type new tag:");
+                            System.out.print("> ");
                             new_task.setTag(getInput());
                             break;
                         case "status":
                             System.out.println("Old Status:\n" + new_task.getStrStatus() + "\n");
-                            System.out.println("Type new status:\n> ");
+                            System.out.println("Type new status:");
+                            System.out.print("> ");
                             switch (getInput().toLowerCase()) {
                                 case "todo":
                                     new_task.setStatus(0);
@@ -161,8 +168,7 @@ public class TaskHandler {
                         default:
                             System.out.println("Invalid field to edit!");
                     }
-                    if (save || discard) break;
-                }
+                } while (!save && !discard);
             }
             if (save || discard) break;
         }
@@ -178,12 +184,19 @@ public class TaskHandler {
         return tasks;
     }
     public static void viewTask(ArrayList<Task> tasks) {
-        System.out.println("How you want to sort the todo list? BY:(Status | Priority | Tag)\n> ");
-        String key = getInput().toLowerCase();
-        switch (key) {
-            case "status": TaskPrinter.allByStatus(tasks);
-            case "priority": TaskPrinter.allByPriority(tasks);
+        System.out.println("How you want to sort the todo list? BY:(Status | Priority | Tag)");
+        System.out.print("> ");
+        switch (getInput().toLowerCase()) {
+            case "status":
+                TaskPrinter.allByStatus(tasks);
+                break;
+            case "priority":
+                TaskPrinter.allByPriority(tasks);
+                break;
             case "tag": TaskPrinter.allByTag(tasks);
+                break;
+            default:
+                System.out.println("Invalid sort");
         }
-    };
+    }
 }
