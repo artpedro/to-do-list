@@ -7,19 +7,19 @@ import java.util.Collections;
 
 public class TaskPrinter {
     public static void allByPriority(ArrayList<Task> tasks) {
-        Collections.sort(tasks, new PriorityComparator());
+        tasks.sort(new PriorityComparator());
         for (Task t : tasks) {
             System.out.println(t);
         }
     }
     public static void allByStatus(ArrayList<Task> tasks) {
-        Collections.sort(tasks, new StatusComparator());
+        tasks.sort(new StatusComparator());
         for (Task t : tasks) {
             System.out.println(t);
         }
     }
     public static void allByTag(ArrayList<Task> tasks) {
-        Collections.sort(tasks, new TagComparator());
+        tasks.sort(new TagComparator());
         for (Task t : tasks) {
             System.out.println(t);
         }
