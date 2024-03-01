@@ -1,0 +1,63 @@
+a {
+    color: whitesmoke;
+}
+a:hover {
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    color: whitesmoke;
+}
+
+html,body, .container {
+    background-color: #3E3232;
+    color: whitesmoke;
+}
+
+.task-button {
+    width: 10%;
+    display: flex;
+    justify-content:flex-end;
+    gap:20%;
+}
+
+.add {
+    background-color: #7E6363;
+    margin-bottom: 2rem;
+}
+.add:hover {
+    transition: 500ms;
+    background-color: green;
+}
+
+.edit:hover {
+    transition: 300ms;
+    color: #F0A500;
+    cursor: pointer;
+
+}
+.list-group-item {
+    background-color: #7E6363;
+    color: whitesmoke;
+}
+.delete:hover {
+    transition: 300ms;
+    color: #C81912;
+    cursor: pointer;
+}
+.creating {
+    margin-top: 2rem;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+.task {
+    width: 100%;
+}
+.new-task {
+    background-color: #7E6363 
+}
+
+.save {
+    margin-top: 1rem;
+    float:right;
+}
