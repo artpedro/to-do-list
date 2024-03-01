@@ -28,6 +28,6 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-./.idea
+.idea
 
-./log/task_log.csv
+log/task_log.csv
