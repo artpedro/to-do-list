@@ -22,23 +22,46 @@
 
             <ul class="list-group mx-auto text-light">
                 <li
-                    class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>Go to the grocery</span>
+                class="list-group-item d-flex flex-column justify-content-between align-items-center">
+                <div class="task">
+                    <input type="checkbox" class="status"/>
+                    <a data-toggle="collapse"
+                            href="#Example2"
+                            aria-expanded="false"
+                            aria-controls="Example">
+                    <span class="title">Wash the dishes</span>
+                    </a>
+                    <button class="category btn btn-primary">[ Tag1 ]</button>
                     <div class="task-button">
-                        <i class="fa fa-pencil edit" aria-hidden="true"></i>
+                        <a data-toggle="collapse"
+                            href="#Example"
+                            aria-expanded="false"
+                            aria-controls="Example">
+                            <i class="fa fa-pencil edit"
+                                aria-hidden="true"></i>
+                        </a>
                         <i class="fa-solid fa-trash-can delete"></i>
                     </div>
-                </li>
+                </div>
+                <div class="collapse" id="Example">
+                    teste
+                </div>
+                <div class="collapse" id="Example2">
+                    teste2
+                </div>
+            </li>
 
                 <li
                     class="list-group-item d-flex flex-column justify-content-between align-items-center">
-                    <div class="task d-flex flex-row justify-content-between align-items-center">
+                    <div class="task">
+                        <input type="checkbox" class="status"/>
                         <a data-toggle="collapse"
                                 href="#Example2"
                                 aria-expanded="false"
                                 aria-controls="Example">
-                        <span>Do the Laundry</span>
+                        <span class="title">Do the Laundry</span>
                         </a>
+                        <button class="category btn btn-primary">[ Tag2 ]</button>
                         <div class="task-button">
                             <a data-toggle="collapse"
                                 href="#Example"
@@ -59,13 +82,33 @@
                 </li>
 
                 <li
-                    class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>Walk the dog</span>
-                    <div class="task-button">
-                        <i class="fa fa-pencil edit" aria-hidden="true"></i>
-                        <i class="fa-solid fa-trash-can delete"></i>
+                    class="list-group-item d-flex flex-column justify-content-between align-items-center">
+                    <div class="task">
+                        <input type="checkbox" class="status"/>
+                        <a data-toggle="collapse"
+                                href="#Example2"
+                                aria-expanded="false"
+                                aria-controls="Example">
+                        <span class="title">Walk the dog</span>
+                        </a>
+                        <button class="category btn btn-primary">[ Tag3 ]</button>
+                        <div class="task-button">
+                            <a data-toggle="collapse"
+                                href="#Example"
+                                aria-expanded="false"
+                                aria-controls="Example">
+                                <i class="fa fa-pencil edit"
+                                    aria-hidden="true"></i>
+                            </a>
+                            <i class="fa-solid fa-trash-can delete"></i>
+                        </div>
                     </div>
-
+                    <div class="collapse" id="Example">
+                        teste
+                    </div>
+                    <div class="collapse" id="Example2">
+                        teste2
+                    </div>
                 </li>
             </ul>
             <section class="creating">

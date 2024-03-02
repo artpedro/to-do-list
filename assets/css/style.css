@@ -1,5 +1,17 @@
 a {
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: whitesmoke;
+}
+
+a > *, .delete {
+    padding: 0;
+    margin: 0;
+    font-size: 16px; /* Adjust based on your needs */
 }
 a:hover {
     text-decoration: none;
@@ -13,16 +25,41 @@ html,body, .container {
     color: whitesmoke;
 }
 
+.status {
+    height: 20px;
+    width: 20px;
+    color: #3E3232;
+}
+
+.category {
+    margin-left: auto;
+    width: 10rem;
+    background-color: #3E3232;
+    border: none;
+}
+.category:hover {
+    background-color: #3E3232;
+}
 .task-button {
     width: 10%;
     display: flex;
     justify-content:flex-end;
     gap:20%;
 }
-
+.title {
+    font-size: 20px;
+    padding: 20px;
+}
+.task {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
 .add {
     background-color: #7E6363;
     margin-bottom: 2rem;
+    border-color: black;
 }
 .add:hover {
     transition: 500ms;
@@ -50,9 +87,7 @@ html,body, .container {
     flex-flow: column wrap;
     justify-content: space-between;
 }
-.task {
-    width: 100%;
-}
+
 .new-task {
     background-color: #7E6363 
 }
