@@ -22,92 +22,246 @@
 
             <ul class="list-group mx-auto text-light">
                 <li
-                class="list-group-item d-flex flex-column justify-content-between align-items-center">
-                <div class="task">
-                    <input type="checkbox" class="status"/>
-                    <a data-toggle="collapse"
-                            href="#Example2"
-                            aria-expanded="false"
-                            aria-controls="Example">
-                    <span class="title">Wash the dishes</span>
-                    </a>
-                    <button class="category btn btn-primary">[ Tag1 ]</button>
-                    <div class="task-button">
-                        <a data-toggle="collapse"
-                            href="#Example"
-                            aria-expanded="false"
-                            aria-controls="Example">
-                            <i class="fa fa-pencil edit"
-                                aria-hidden="true"></i>
-                        </a>
-                        <i class="fa-solid fa-trash-can delete"></i>
-                    </div>
-                </div>
-                <div class="collapse" id="Example">
-                    teste
-                </div>
-                <div class="collapse" id="Example2">
-                    teste2
-                </div>
-            </li>
-
-                <li
                     class="list-group-item d-flex flex-column justify-content-between align-items-center">
                     <div class="task">
-                        <input type="checkbox" class="status"/>
+                        <input type="checkbox" class="status" />
                         <a data-toggle="collapse"
-                                href="#Example2"
-                                aria-expanded="false"
-                                aria-controls="Example">
-                        <span class="title">Do the Laundry</span>
+                            href="#example1"
+                            aria-expanded="false"
+                            aria-controls="example1">
+                            <span class="title">Wash the dishes</span>
                         </a>
-                        <button class="category btn btn-primary">[ Tag2 ]</button>
+                        <button class="category btn btn-primary">[ Tag1
+                            ]</button>
                         <div class="task-button">
                             <a data-toggle="collapse"
-                                href="#Example"
+                                href="#edit1"
                                 aria-expanded="false"
-                                aria-controls="Example">
+                                aria-controls="edit1">
                                 <i class="fa fa-pencil edit"
                                     aria-hidden="true"></i>
                             </a>
                             <i class="fa-solid fa-trash-can delete"></i>
                         </div>
                     </div>
-                    <div class="collapse" id="Example">
-                        teste
+                    <div class="collapse" id="example1">
+                        <div class="info-display">
+                            <p class="mb-3"><strong>Name:</strong> Task default
+                                name</p>
+                            <p class="mb-3"><strong>Date:</strong>
+                                2023-01-01</p>
+                            <p class="mb-3"><strong>Tag:</strong> Default
+                                Tag</p>
+                            <p class="mb-3"><strong>Status:</strong> Doing</p>
+                            <p class="mb-3"><strong>Priority:</strong> 3</p>
+                            <p class="mb-3"><strong>Description:</strong> Test
+                                description to wrap around</p>
+                        </div>
                     </div>
-                    <div class="collapse" id="Example2">
-                        teste2
+                    <div class="collapse" id="edit1">
+                        <hr>
+                        <h5>Editing task</p>
+                        <hr>
+                        <form>
+                            <div class="mb-3">
+                                <p class="field-name">Task's name</p>
+                                <input type="text" class="form-control"
+                                    name="name" placeholder="Name"
+                                    value="New task's name" required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    end-date</p>
+                                <input type="text" class="form-control"
+                                    name="date" placeholder="Date (text format)"
+                                    value="01-01-2024" required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    tag (optional)</p>
+                                <input type="text" class="form-control"
+                                    name="tag" placeholder="Tag">
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    priority (1-5)</p>
+                                <input type="number" class="form-control"
+                                    name="priority" min="1" max="5" value="3"
+                                    required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    status (0: todo, 1: doing, 2: done)</p>
+                                <input type="number" class="form-control"
+                                    name="priority" min="0" max="2" value="0"
+                                    required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    description</p>
+                                <textarea class="form-control"
+                                    name="description" placeholder="Description"
+                                    required>New description</textarea>
+                            </div>
+                            <button class="btn save-edit">Save changes</button>
+                        </form>
                     </div>
                 </li>
-
                 <li
                     class="list-group-item d-flex flex-column justify-content-between align-items-center">
                     <div class="task">
-                        <input type="checkbox" class="status"/>
+                        <input type="checkbox" class="status" />
                         <a data-toggle="collapse"
-                                href="#Example2"
-                                aria-expanded="false"
-                                aria-controls="Example">
-                        <span class="title">Walk the dog</span>
+                            href="#example2"
+                            aria-expanded="false"
+                            aria-controls="example2">
+                            <span class="title">Wash the dishes</span>
                         </a>
-                        <button class="category btn btn-primary">[ Tag3 ]</button>
+                        <button class="category btn btn-primary">[ Tag1 ]
+                        </button>
                         <div class="task-button">
                             <a data-toggle="collapse"
-                                href="#Example"
+                                href="#edit2"
                                 aria-expanded="false"
-                                aria-controls="Example">
+                                aria-controls="edit2">
                                 <i class="fa fa-pencil edit"
                                     aria-hidden="true"></i>
                             </a>
                             <i class="fa-solid fa-trash-can delete"></i>
                         </div>
                     </div>
-                    <div class="collapse" id="Example">
-                        teste
+                    <div class="collapse" id="example2">
+                        <div class="info-display">
+                            <p class="mb-3"><strong>Name:</strong> Task default
+                                name</p>
+                            <p class="mb-3"><strong>Date:</strong>
+                                2023-01-01</p>
+                            <p class="mb-3"><strong>Tag:</strong> Default
+                                Tag</p>
+                            <p class="mb-3"><strong>Status:</strong> Doing</p>
+                            <p class="mb-3"><strong>Priority:</strong> 3</p>
+                            <p class="mb-3"><strong>Description:</strong> Test
+                                description to wrap around</p>
+                        </div>
                     </div>
-                    <div class="collapse" id="Example2">
-                        teste2
+                    <div class="collapse" id="edit2">
+                        <hr>
+                        <h5>Editing task</p>
+                        <hr>
+                        <form>
+                            <div class="mb-3">
+                                <p class="field-name">Task's name</p>
+                                <input type="text" class="form-control"
+                                    name="name" placeholder="Name"
+                                    value="New task's name" required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    end-date</p>
+                                <input type="text" class="form-control"
+                                    name="date" placeholder="Date (text format)"
+                                    value="01-01-2024" required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    tag (optional)</p>
+                                <input type="text" class="form-control"
+                                    name="tag" placeholder="Tag">
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    priority (1-5)</p>
+                                <input type="number" class="form-control"
+                                    name="priority" min="1" max="5" value="3"
+                                    required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    status (0: todo, 1: doing, 2: done)</p>
+                                <input type="number" class="form-control"
+                                    name="priority" min="0" max="2" value="0"
+                                    required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    description</p>
+                                <textarea class="form-control"
+                                    name="description" placeholder="Description"
+                                    required>New description</textarea>
+                            </div>
+                            <button class="btn save-edit">Save changes</button>
+                        </form>
+                    </div>
+                </li>
+                <li
+                    class="list-group-item d-flex flex-column justify-content-between align-items-center">
+                    <div class="task">
+                        <input type="checkbox" class="status" />
+                        <a data-toggle="collapse"
+                            href="#example3"
+                            aria-expanded="false"
+                            aria-controls="example3">
+                            <span class="title">Wash the dishes</span>
+                        </a>
+                        <button class="category btn btn-primary">[ Tag1
+                            ]</button>
+                        <div class="task-button">
+                            <a data-toggle="collapse"
+                                href="#edit3"
+                                aria-expanded="false"
+                                aria-controls="edit3">
+                                <i class="fa fa-pencil edit"
+                                    aria-hidden="true"></i>
+                            </a>
+                            <i class="fa-solid fa-trash-can delete"></i>
+                        </div>
+                    </div>
+                    <div class="collapse" id="example3">
+                        <div class="info-display">
+                            <p class="mb-3"><strong>Name:</strong> Task default
+                                name</p>
+                            <p class="mb-3"><strong>Date:</strong>
+                                2023-01-01</p>
+                            <p class="mb-3"><strong>Tag:</strong> Default
+                                Tag</p>
+                            <p class="mb-3"><strong>Status:</strong> Doing</p>
+                            <p class="mb-3"><strong>Priority:</strong> 3</p>
+                            <p class="mb-3"><strong>Description:</strong> Test
+                                description to wrap around</p>
+                        </div>
+                    </div>
+                    <div class="collapse" id="edit3">
+                        <hr>
+                        <h5>Editing task</p>
+                        <hr>
+                        <form>
+                            <div class="mb-3">
+                                <p class="field-name">Task's name</p>
+                                <input type="text" class="form-control"
+                                    name="name" placeholder="Name"
+                                    value="New task's name" required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    end-date</p>
+                                <input type="text" class="form-control"
+                                    name="date" placeholder="Date (text format)"
+                                    value="01-01-2024" required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    tag (optional)</p>
+                                <input type="text" class="form-control"
+                                    name="tag" placeholder="Tag">
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    priority (1-5)</p>
+                                <input type="number" class="form-control"
+                                    name="priority" min="1" max="5" value="3"
+                                    required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    status (0: todo, 1: doing, 2: done)</p>
+                                <input type="number" class="form-control"
+                                    name="priority" min="0" max="2" value="0"
+                                    required>
+                            </div>
+                            <div class="mb-3"><p class="field-name">Task's
+                                    description</p>
+                                <textarea class="form-control"
+                                    name="description" placeholder="Description"
+                                    required>New description</textarea>
+                            </div>
+                            <button class="btn save-edit">Save changes</button>
+                        </form>
                     </div>
                 </li>
             </ul>
@@ -116,21 +270,62 @@
                     class="add btn btn-primary"
                     type="button"
                     data-toggle="collapse"
-                    data-target="#collapseExample"
+                    data-target="#add-task"
                     aria-expanded="false"
-                    aria-controls="collapseExample">
+                    aria-controls="add-task">
                     <strong>+</strong>
                 </button>
-                <div class="collapse" id="collapseExample">
+                <div class="collapse" id="add-task">
                     <div class="new-task card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high
-                        life accusamus
-                        terry richardson ad squid. Nihil anim keffiyeh
-                        helvetica, craft beer
-                        labore wes anderson cred nesciunt sapiente ea proident.
+                        <h5>New task</h5>
+                        <hr>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Task's
+                                    name</label>
+                                <input type="text" class="form-control"
+                                    name="name" placeholder="Name"
+                                    value="New task's name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="date" class="form-label">Task's
+                                    end-date</label>
+                                <input type="text" class="form-control"
+                                    name="date" placeholder="Date (text format)"
+                                    value="01-01-2024" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tag" class="form-label">Task's tag
+                                    (optional)</label>
+                                <input type="text" class="form-control"
+                                    name="tag" placeholder="Tag">
+                            </div>
+                            <div class="mb-3">
+                                <label for="priority"
+                                    class="form-label">Priority (1 to 5)</label>
+                                <input type="number" class="form-control"
+                                    name="priority" min="1" max="5" value="3"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="priority" class="form-label">Status
+                                    (0: todo, 1: doing 2: done)</label>
+                                <input type="number" class="form-control"
+                                    name="priority" min="0" max="2" value="0"
+                                    required>
+                            </div>
+                            <div class="mb-3 new-task-description ">
+                                <label for="description"
+                                    class="form-label">Task's
+                                    description</label>
+                                <textarea class="form-control"
+                                    name="description" placeholder="Description"
+                                    required>New description</textarea>
+                            </div>
+                        </form>
                     </div>
                     <button
-                        class="save btn btn-primary"
+                        class="save btn save-new"
                         type="button"
                         data-toggle="collapse"
                         data-target="#collapseExample"
