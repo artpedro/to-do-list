@@ -30,17 +30,16 @@ class TaskHandler {
         return newTask;
     }
     
-    // test ok
-    removeTaskByName(name) {
-        let index = this.tasks.findIndex(function(task) {return (task['name'] == name);});
+    removeTaskById(id) {
+        let index = this.tasks.findIndex(function(task) {return (task['uid'] == id);});
         if (index !== -1) {
-          this.tasks.splice(index, 1);
-          this.saveTasks()
-          return true;
+            this.tasks.splice(index, 1);
+            this.saveTasks();
+            return true;
         }
         return false;
     }
-    
+
     // test ok
     showTasks() {
         for (let i = 0; i < this.tasks.length; i++) {
@@ -70,8 +69,7 @@ class TaskHandler {
     
             let task_full_id = "full-task-" + task_id;
             let task_edit_id = "edit-task-" + task_id;
-            let task_full_button = "btn-full-task-" + task_id;
-            let task_edit_button = "btn-edit-task-" + task_id;
+            let task_delete_button = "delete-task-" + task_id;
 
             var full_li_elem = '<li ' +
                             'class=\'list-group-item d-flex flex-column justify-content-between align-items-center\'>' +
@@ -92,7 +90,9 @@ class TaskHandler {
                                         '<i class=\'fa fa-pencil edit\'' +
                                             'aria-hidden=\'true\'></i>' +
                                     '</a>' +
-                                    '<i class=\'fa-solid fa-trash-can delete\'></i>' +
+                                    '<a id=\'' + task_delete_button + '\' class=\'delete\'>' +
+                                    '<i class=\'fa-solid fa-trash-can\'></i>' +
+                                    '</a>' +
                                 '</div>' +
                             '</div>' +
                             '<div class=\'collapse\' id=\'' +  task_full_id + '\'>' +
@@ -173,5 +173,16 @@ function refreshTasksUl(taskHandler) {
 addEventListener('load', function() {
     var taskHandler = new TaskHandler();
     refreshTasksUl(taskHandler);
-});
 
+    var delete_buttons = document.getElementsByClassName("delete"); 
+
+    for (let del_btn = 0; del_btn < delete_buttons.length; del_btn++) {
+        
+        delete_buttons[del_btn].onclick = function() {
+            array_uid = this.id.split('-');
+            uid = array_uid[array_uid.length - 1];
+            taskHandler.removeTaskById(uid);
+            refreshTasksUl(taskHandler);
+        };
+    }
+});
