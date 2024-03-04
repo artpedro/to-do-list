@@ -98,15 +98,15 @@ class TaskHandler {
                             '<div class=\'collapse\' id=\'' +  task_full_id + '\'>' +
                             '<hr>' +
                                 '<div class=\'info-display\'>' +
-                                    '<p class=\'mb-3\'><strong>End-Date:</strong>'+ this.tasks[i].endDate +
+                                    '<p class=\'mb-3\'><strong>End-Date: </strong>'+ this.tasks[i].endDate +
                                         '</p>' +
-                                    '<p class=\'mb-3\'><strong>Tag:</strong>'+ this.tasks[i].tag +
+                                    '<p class=\'mb-3\'><strong>Tag: </strong>'+ this.tasks[i].tag +
                                         '</p>' +
-                                    '<p class=\'mb-3\'><strong>Status:</strong>'+ status_string +
+                                    '<p class=\'mb-3\'><strong>Status: </strong>'+ status_string +
                                         '</p>' +
-                                    '<p class=\'mb-3\'><strong>Priority:</strong>'+ this.tasks[i].priority +
+                                    '<p class=\'mb-3\'><strong>Priority: </strong>'+ this.tasks[i].priority +
                                         '</p>' +
-                                    '<p class=\'mb-3\'><strong>Description:</strong>' + this.tasks[i].desc +
+                                    '<p class=\'mb-3\'><strong>Description: </strong>' + this.tasks[i].desc +
                                         '</p>' +
                                 '</div>' +
                             '</div>' +
@@ -116,37 +116,37 @@ class TaskHandler {
                                 '<hr>' +
                                 '<form>' +
                                     '<div class=\'mb-3\'>' +
-                                        '<p class=\'field-name\'>Task\'s name</p>' +
+                                        '<p class=\'field-name\'>Task\'s name </p>' +
                                         '<input type=\'text\' class=\'form-control\'' +
                                             'name=\'name\' placeholder=\'Name\'' +
                                             'value=\''+ this.tasks[i].name +'\' required>' +
                                     '</div>' +
                                     '<div class=\'mb-3\'><p class=\'field-name\'>Task\'s ' +
-                                            'end-date</p>' +
+                                            'end-date </p>' +
                                         '<input type=\'text\' class=\'form-control\'' +
                                             'name=\'date\' placeholder=\'Date (text format)\'' +
                                             'value=\''+ this.tasks[i].endDate +'\' required>' +
                                     '</div>' +
                                     '<div class=\'mb-3\'><p class=\'field-name\'>Task\'s ' +
-                                            'tag (optional)</p>' +
+                                            'tag </p>' +
                                         '<input type=\'text\' class=\'form-control\'' +
                                             'name=\'tag\' placeholder=\'Tag\'' +
                                             'value=\'' + this.tasks[i].tag +'\' required>' +
                                     '</div>' +
                                     '<div class=\'mb-3\'><p class=\'field-name\'>Task\'s ' +
-                                            'priority (1-5)</p>' +
+                                            'priority (1-5) </p>' +
                                         '<input type=\'number\' class=\'form-control\'' +
                                             'name=\'priority\' min=\'1\' max=\'5\' value=\'' + this.tasks[i].priority + '\' ' +
                                             'required>' +
                                     '</div>' +
                                     '<div class=\'mb-3\'><p class=\'field-name\'>Task\'s ' +
-                                            'status (0: todo, 1: doing, 2: done)</p>' +
+                                            'status (0: todo, 1: doing, 2: done) </p>' +
                                         '<input type=\'number\' class=\'form-control\'' +
                                             'name=\'priority\' min=\'0\' max=\'2\' value=\''+ this.tasks[i].status +'\' ' +
                                             'required>' +
                                     '</div>' +
                                     '<div class=\'mb-3\'><p class=\'field-name\'>Task\'s ' +
-                                            'description</p>' +
+                                            'description </p>' +
                                         '<textarea class=\'form-control\'' +
                                             'name=\'description\' placeholder=\'Description\' ' +
                                             'required>'+ this.tasks[i].desc + '</textarea>' +
@@ -168,15 +168,9 @@ function refreshTasksUl(taskHandler) {
     for (let i = 0; i < all_li.length; i++) {
             tasks_ul.innerHTML += all_li[i];    
     }
-}
-
-addEventListener('load', function() {
-    var taskHandler = new TaskHandler();
-    refreshTasksUl(taskHandler);
-
-    // DELETE BUTTON  
-
     var delete_buttons = document.getElementsByClassName("delete"); 
+
+    // DELETE BUTTON
 
     for (let del_btn = 0; del_btn < delete_buttons.length; del_btn++) {
         
@@ -187,6 +181,11 @@ addEventListener('load', function() {
             refreshTasksUl(taskHandler);
         };
     }
+}
+
+addEventListener('load', function() {
+    var taskHandler = new TaskHandler();
+    refreshTasksUl(taskHandler);
 
     // ADD FORMS
 
