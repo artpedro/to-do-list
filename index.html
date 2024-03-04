@@ -1,110 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="https://kit.fontawesome.com/d563ea2da0.js"
-            crossorigin="anonymous"></script>
-        <link rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous" />
-        <link rel="stylesheet" href="./assets/css/style.css" />
-        <title>Document</title>
-    </head>
 
-    <body>
-        <main class="container">
-            <header class="text-center text-light my-4">
-                <h1 class="mb-4">Todo List</h1>
-            </header>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/d563ea2da0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Todo list</title>
+</head>
 
-            <ul id="all-tasks" class="list-group mx-auto text-light">
-            </ul>
-            <section class="creating">
-                <button
-                    class="add btn btn-primary"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#add-task"
-                    aria-expanded="false"
-                    aria-controls="add-task">
-                    <strong>+</strong>
-                </button>
-                <div class="collapse" id="add-task">
-                    <div class="new-task card card-body">
-                        <h5>New task</h5>
-                        <hr>
-                        <form id='new-task'>
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Task's
-                                    name</label>
-                                <input type="text" class="form-control"
-                                    name="name" placeholder="Name"
-                                    value="New task's name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="date" class="form-label">Task's
-                                    end-date</label>
-                                <input type="text" class="form-control"
-                                    name="date" placeholder="Date (text format)"
-                                    value="01-01-2024" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tag" class="form-label">Task's tag
-                                    (optional)</label>
-                                <input type="text" class="form-control"
-                                    name="tag" placeholder="Tag">
-                            </div>
-                            <div class="mb-3">
-                                <label for="priority"
-                                    class="form-label">Priority (1 to 5)</label>
-                                <input type="number" class="form-control"
-                                    name="priority" min="1" max="5" value="3"
-                                    required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="status" class="form-label">Status
-                                    (0: todo, 1: doing 2: done)</label>
-                                <input type="number" class="form-control"
-                                    name="status" min="0" max="2" value="0"
-                                    required>
-                            </div>
-                            <div class="mb-3 new-task-description ">
-                                <label for="description"
-                                    class="form-label">Task's
-                                    description</label>
-                                <textarea class="form-control"
-                                    name="description" placeholder="Description"
-                                    required>New description</textarea>
-                                </div>
-                                <button
-                                    class="save btn save-new"
-                                    type="submit"
-                                    data-toggle="collapse"
-                                    data-target="#collapseExample"
-                                    aria-expanded="false"
-                                    aria-controls="collapseExample">
-                                    <strong>Save</strong>
-                                </button>
-                        </form>
-                    </div>
+<body>
+    <main class="container">
+        <header class="text-center text-light my-4">
+            <h1 class="mb-4">Todo List</h1>
+        </header>
+
+        <ul id="all-tasks" class="list-group mx-auto text-light">
+        </ul>
+        <section class="creating">
+            <button class="add btn btn-primary" type="button" data-toggle="collapse" data-target="#add-task"
+                aria-expanded="false" aria-controls="add-task">
+                <strong>+</strong>
+            </button>
+            <div class="collapse" id="add-task">
+                <div class="new-task card card-body">
+                    <h5>New task</h5>
+                    <hr>
+                    <form id='new-task'>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Task's
+                                name</label>
+                            <input type="text" class="form-control" name="name" placeholder="Name"
+                                value="New task's name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Task's
+                                end-date</label>
+                            <input type="text" class="form-control" name="date" placeholder="Date (text format)"
+                                value="01-01-2024" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tag" class="form-label">Task's tag</label>
+                            <input type="text" class="form-control" name="tag" placeholder="Tag" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="priority" class="form-label">Priority (1 to 5)</label>
+                            <input type="number" class="form-control" name="priority" min="1" max="5" value="3"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Status
+                                (0: todo, 1: doing 2: done)</label>
+                            <input type="number" class="form-control" name="status" min="0" max="2" value="0" required>
+                        </div>
+                        <div class="mb-3 new-task-description ">
+                            <label for="description" class="form-label">Task's
+                                description</label>
+                            <textarea class="form-control" name="description" placeholder="Description"
+                                required>New description</textarea>
+                        </div>
+                        <button class="save btn save-new" type="submit" data-toggle="collapse"
+                            data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <strong>Save</strong>
+                        </button>
+                    </form>
                 </div>
-            </section>
-        </main>
-        <script
-            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-        <script src="./assets/js/to-do.js"></script>
-    </body>
+            </div>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="./assets/js/to-do.js"></script>
+</body>
+
 </html>

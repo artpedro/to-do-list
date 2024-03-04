@@ -1,21 +1,18 @@
 class TaskHandler {
-    // Test ok
     constructor() {
         let tasksAsString = localStorage.getItem("LogTaskList");
         if (tasksAsString) {
-          this.tasks = JSON.parse(tasksAsString);
+            this.tasks = JSON.parse(tasksAsString);
         } else {
-        this.tasks = [];
+            this.tasks = [];
         }
     }
-    
-    // Test ok
+
     addTask(name, desc, endDate, status, tag, priority) {
-        let repeated_task = (this.tasks.findIndex((task) => {return (task['name'] == name);}) != -1)
+        let repeated_task = (this.tasks.findIndex((task) => { return (task['name'] == name); }) != -1)
         if (repeated_task) {
             return false;
         }
-        console.log(status);
         var newTask = {
             'name': name,
             'desc': desc,
@@ -25,14 +22,14 @@ class TaskHandler {
             'tag': tag,
             'priority': priority
         };
-        
+
         this.tasks.push(newTask);
         this.saveTasks();
         return newTask;
     }
-    
+
     removeTaskById(id) {
-        let index = this.tasks.findIndex(function(task) {return (task['uid'] == id);});
+        let index = this.tasks.findIndex(function (task) { return (task['uid'] == id); });
         if (index !== -1) {
             this.tasks.splice(index, 1);
             this.saveTasks();
@@ -41,14 +38,12 @@ class TaskHandler {
         return false;
     }
 
-    // test ok
     showTasks() {
         for (let i = 0; i < this.tasks.length; i++) {
             console.log(this.tasks[i]);
         }
     }
 
-    // test ok
     saveTasks() {
         localStorage.setItem("LogTaskList", JSON.stringify(this.tasks));
     }
@@ -144,7 +139,7 @@ class TaskHandler {
                                     '<div class=\'mb-3\'><p class=\'field-name\'>Task\'s ' +
                                             'status (0: todo, 1: doing, 2: done) </p>' +
                                         '<input type=\'number\' class=\'form-control\'' +
-                                            'name=\'priority\' min=\'0\' max=\'2\' value=\''+ this.tasks[i].status +'\' ' +
+                                            'name=\'status\' min=\'0\' max=\'2\' value=\''+ this.tasks[i].status +'\' ' +
                                             'required>' +
                                     '</div>' +
                                     '<div class=\'mb-3\'><p class=\'field-name\'>Task\'s ' +
@@ -166,20 +161,25 @@ class TaskHandler {
 function refreshTasksUl(taskHandler) {
     let all_li = taskHandler.tasksAsListItems();
     let tasks_ul = document.getElementById("all-tasks");
+
     tasks_ul.innerHTML = "";
+
     for (let i = 0; i < all_li.length; i++) {
-            tasks_ul.innerHTML += all_li[i];    
+        tasks_ul.innerHTML += all_li[i];
     }
-    var delete_buttons = document.getElementsByClassName("delete"); 
 
     // DELETE BUTTON
 
+    var delete_buttons = document.getElementsByClassName("delete");
+
     for (let del_btn = 0; del_btn < delete_buttons.length; del_btn++) {
-        
-        delete_buttons[del_btn].onclick = function() {
+
+        delete_buttons[del_btn].onclick = function () {
             array_uid = this.id.split('-');
             uid = array_uid[array_uid.length - 1];
+
             taskHandler.removeTaskById(uid);
+
             refreshTasksUl(taskHandler);
         };
     }
@@ -187,40 +187,45 @@ function refreshTasksUl(taskHandler) {
     // EDIT BUTTON
 
     var edit_forms = document.getElementsByClassName('task-edit');
-    
+
     for (let edit_f = 0; edit_f < edit_forms.length; edit_f++) {
-        edit_forms[edit_f].addEventListener('submit', function(event) {
+
+        edit_forms[edit_f].addEventListener('submit', function (event) {
             event.preventDefault();
-    
-        let formData = new FormData(this);
-        edit_id_array = edit_forms[edit_f].id.split('-');
-        edit_id = edit_id_array[edit_id_array.length - 1];
-        taskHandler.removeTaskById(edit_id);
-        if (taskHandler.addTask(formData.get('name'),formData.get('description'),formData.get('date'), formData.get('status'), formData.get('tag'), formData.get('priority'))) {
-            refreshTasksUl(taskHandler);    
-        } else {
-            console.log("Unexpected error");
-        }               
+
+            let formData = new FormData(this);
+
+            edit_id_array = edit_forms[edit_f].id.split('-');
+            edit_id = edit_id_array[edit_id_array.length - 1];
+
+            taskHandler.removeTaskById(edit_id);
+
+            if (taskHandler.addTask(formData.get('name'), formData.get('description'), formData.get('date'), formData.get('status'), formData.get('tag'), formData.get('priority'))) {
+                refreshTasksUl(taskHandler);
+            } else {
+                console.log("Unexpected error");
+            }
         });
 
     }
 }
 
-addEventListener('load', function() {
+addEventListener('load', function () {
+
     var taskHandler = new TaskHandler();
     refreshTasksUl(taskHandler);
 
     // ADD FORMS
 
-    document.getElementById('new-task').addEventListener('submit', function(event) {
+    document.getElementById('new-task').addEventListener('submit', function (event) {
         event.preventDefault();
-        
+
         let formData = new FormData(this);
-        console.log(formData.get('status'));
-        if (taskHandler.addTask(formData.get('name'),formData.get('description'),formData.get('date'), formData.get('status'), formData.get('tag'), formData.get('priority'))) {
-            refreshTasksUl(taskHandler);    
+
+        if (taskHandler.addTask(formData.get('name'), formData.get('description'), formData.get('date'), formData.get('status'), formData.get('tag'), formData.get('priority'))) {
+            refreshTasksUl(taskHandler);
         } else {
             console.log("This task already exists!");
         }
-      });
+    });
 });
