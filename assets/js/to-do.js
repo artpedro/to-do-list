@@ -27,6 +27,13 @@ class TaskHandler {
         this.saveTasks();
         return newTask;
     }
+    getTaskById(id) {
+        let index = this.tasks.findIndex(function (task) { return (task['uid'] == id); });
+        if (index !== -1) {
+            return this.tasks[index];
+        }
+        return false;    
+    }
 
     removeTaskById(id) {
         let index = this.tasks.findIndex(function (task) { return (task['uid'] == id); });
@@ -67,11 +74,12 @@ class TaskHandler {
             let task_edit_id = "edit-task-" + task_id;
             let task_delete_button = "delete-task-" + task_id;
             let task_edit_form = "edit-form-" + task_id;
+            let task_status_id = "status-" + task_id;
 
             var full_li_elem = '<li ' +
                             'class=\'list-group-item d-flex flex-column justify-content-between align-items-center\'>' +
                             '<div class=\'task\'>' +
-                                '<input type=\'checkbox\' class=\'status\''+ check_status +'/>' +
+                                '<input type=\'checkbox\' id=\''+ task_status_id + '\'class=\'status\''+ check_status +'/>' +
                                 '<a data-toggle=\'collapse\'' +
                                     'href=\'#' + task_full_id + '\'' +
                                     ' aria-expanded=\'false\'' +
@@ -207,6 +215,35 @@ function refreshTasksUl(taskHandler) {
             }
         });
 
+    }
+
+    // CHANGE STATUS BUTTON 
+
+
+    var status_check_box = document.getElementsByClassName('status');
+
+    for (let chk_box = 0; chk_box < status_check_box.length; chk_box++) {
+
+        status_check_box[chk_box].addEventListener('change', function () {
+            status_id_array = this.id.split('-');
+            status_id = status_id_array[status_id_array.length - 1];
+
+            current_task = taskHandler.getTaskById(status_id);
+
+            if (this.checked) {
+                taskHandler.removeTaskById(status_id);
+
+                taskHandler.addTask(current_task.name, current_task.desc, current_task.endDate, 2, current_task.tag, current_task.priority);
+                
+                refreshTasksUl(taskHandler);
+            } else {
+                taskHandler.removeTaskById(status_id);
+                
+                taskHandler.addTask(current_task.name, current_task.desc, current_task.endDate, 0, current_task.tag, current_task.priority);
+                
+                refreshTasksUl(taskHandler);
+            }
+        });
     }
 }
 
