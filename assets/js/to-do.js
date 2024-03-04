@@ -174,6 +174,8 @@ addEventListener('load', function() {
     var taskHandler = new TaskHandler();
     refreshTasksUl(taskHandler);
 
+    // DELETE BUTTON  
+
     var delete_buttons = document.getElementsByClassName("delete"); 
 
     for (let del_btn = 0; del_btn < delete_buttons.length; del_btn++) {
@@ -185,4 +187,17 @@ addEventListener('load', function() {
             refreshTasksUl(taskHandler);
         };
     }
+
+    // ADD FORMS
+
+    document.getElementById('new-task').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        let formData = new FormData(this);
+        if (taskHandler.addTask(formData.get('name'),formData.get('description'),formData.get('date'), formData.get('status'), formData.get('tag'), formData.get('priority'))) {
+            refreshTasksUl(taskHandler);    
+        } else {
+            console.log("This task already exists!");
+        }
+      });
 });

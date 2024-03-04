@@ -279,7 +279,7 @@
                     <div class="new-task card card-body">
                         <h5>New task</h5>
                         <hr>
-                        <form>
+                        <form id='new-task'>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Task's
                                     name</label>
@@ -321,18 +321,18 @@
                                 <textarea class="form-control"
                                     name="description" placeholder="Description"
                                     required>New description</textarea>
-                            </div>
+                                </div>
+                                <button
+                                    class="save btn save-new"
+                                    type="submit"
+                                    data-toggle="collapse"
+                                    data-target="#collapseExample"
+                                    aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    <strong>Save</strong>
+                                </button>
                         </form>
                     </div>
-                    <button
-                        class="save btn save-new"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#collapseExample"
-                        aria-expanded="false"
-                        aria-controls="collapseExample">
-                        <strong>Save</strong>
-                    </button>
                 </div>
             </section>
         </main>
