@@ -15,6 +15,7 @@ class TaskHandler {
         if (repeated_task) {
             return false;
         }
+        console.log(status);
         var newTask = {
             'name': name,
             'desc': desc,
@@ -70,6 +71,7 @@ class TaskHandler {
             let task_full_id = "full-task-" + task_id;
             let task_edit_id = "edit-task-" + task_id;
             let task_delete_button = "delete-task-" + task_id;
+            let task_edit_form = "edit-form-" + task_id;
 
             var full_li_elem = '<li ' +
                             'class=\'list-group-item d-flex flex-column justify-content-between align-items-center\'>' +
@@ -112,9 +114,9 @@ class TaskHandler {
                             '</div>' +
                             '<div class=\'collapse\' id=\'' + task_edit_id + '\'>' +
                                 '<hr>' +
-                                '<h5>Editing task</p>' +
+                                '<h5>Editing task</h5>' +
                                 '<hr>' +
-                                '<form>' +
+                                '<form class=\'task-edit\' id=\''+ task_edit_form +'\'>' +
                                     '<div class=\'mb-3\'>' +
                                         '<p class=\'field-name\'>Task\'s name </p>' +
                                         '<input type=\'text\' class=\'form-control\'' +
@@ -181,6 +183,27 @@ function refreshTasksUl(taskHandler) {
             refreshTasksUl(taskHandler);
         };
     }
+
+    // EDIT BUTTON
+
+    var edit_forms = document.getElementsByClassName('task-edit');
+    
+    for (let edit_f = 0; edit_f < edit_forms.length; edit_f++) {
+        edit_forms[edit_f].addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+        let formData = new FormData(this);
+        edit_id_array = edit_forms[edit_f].id.split('-');
+        edit_id = edit_id_array[edit_id_array.length - 1];
+        taskHandler.removeTaskById(edit_id);
+        if (taskHandler.addTask(formData.get('name'),formData.get('description'),formData.get('date'), formData.get('status'), formData.get('tag'), formData.get('priority'))) {
+            refreshTasksUl(taskHandler);    
+        } else {
+            console.log("Unexpected error");
+        }               
+        });
+
+    }
 }
 
 addEventListener('load', function() {
@@ -193,6 +216,7 @@ addEventListener('load', function() {
         event.preventDefault();
         
         let formData = new FormData(this);
+        console.log(formData.get('status'));
         if (taskHandler.addTask(formData.get('name'),formData.get('description'),formData.get('date'), formData.get('status'), formData.get('tag'), formData.get('priority'))) {
             refreshTasksUl(taskHandler);    
         } else {
